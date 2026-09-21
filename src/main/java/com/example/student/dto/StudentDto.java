@@ -1,22 +1,25 @@
 package com.example.student.dto;
 
-import com.example.student.model.Student;
-
-
-import java.util.List;
-
-
 public class StudentDto {
-    private long id;
+    private Long id;
     private String name;
     private String surname;
 
-    public String getSurname() {
-        return surname;
+    public StudentDto() {
     }
 
-    public void setSurname(String surname) {
+    public StudentDto(Long id, String name, String surname) {
+        this.id = id;
+        this.name = name;
         this.surname = surname;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -27,15 +30,11 @@ public class StudentDto {
         this.name = name;
     }
 
-    public long getId() {
-        return id;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    List<StudentDto> dtoList(List<Student> studentList) {
-        return null;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

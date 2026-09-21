@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StudentServiceImp implements StudentService{
+public class StudentServiceImp implements StudentService {
     private final StudentRepository studentRepository;
 
     public StudentServiceImp(StudentRepository studentRepository) {
@@ -21,7 +21,8 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public Student findById(Long id) {
-        return studentRepository.findById(id).orElseThrow();
+        return studentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Student not found: " + id));
     }
 
     @Override
@@ -30,7 +31,10 @@ public class StudentServiceImp implements StudentService{
     }
 
     @Override
-    public void DeleteById(Long id) {
+    public void deleteById(Long id) {
+        if (!studentRepository.existsById(id)) {
+            throw new IllegalArgumentException("Student not found: " + id);
+        }
         studentRepository.deleteById(id);
     }
 }

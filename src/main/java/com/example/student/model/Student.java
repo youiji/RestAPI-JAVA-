@@ -1,35 +1,28 @@
 package com.example.student.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "students")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "name",nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String name;
 
-    @Column(name = "surname",nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String surname;
-
-    private void setId(long id) {
-        this.id=id;
-    }
-    private void setName(String name) {
-        this.name=name;
-    }
-    private void setSurname(String surname) {
-        this.surname=surname;
-    }
-    private String getSurname(String surname) {
-        return surname;
-    }
 }
